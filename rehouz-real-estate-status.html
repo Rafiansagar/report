@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rehouz Real Estate — Project Status</title>
+<style>
+    :root {
+        --ink: #11161f;
+        --body: #3f4854;
+        --muted: #6b7482;
+        --line: #e3e7ed;
+        --panel: #f6f8fa;
+        --accent: #1f6feb;
+        --done: #1a7f4b;
+        --open: #b0772a;
+        --page: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+        margin: 0;
+        padding: 48px 16px 72px;
+        background: var(--panel);
+        color: var(--body);
+        font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+    .sheet {
+        max-width: 880px;
+        margin: 0 auto;
+        padding: 56px 56px 64px;
+        background: var(--page);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+    }
+
+    h1 {
+        margin: 0 0 6px;
+        color: var(--ink);
+        font-size: 30px;
+        line-height: 1.25;
+        letter-spacing: -0.4px;
+    }
+
+    h2 {
+        margin: 44px 0 14px;
+        padding-top: 22px;
+        border-top: 1px solid var(--line);
+        color: var(--ink);
+        font-size: 19px;
+        letter-spacing: -0.2px;
+    }
+
+    h2:first-of-type { border-top: 0; padding-top: 0; }
+
+    h3 {
+        margin: 28px 0 10px;
+        color: var(--ink);
+        font-size: 16px;
+    }
+
+    p { margin: 0 0 14px; }
+
+    .meta {
+        margin: 0 0 34px;
+        color: var(--muted);
+        font-size: 14px;
+    }
+
+    .meta span { display: inline-block; margin-right: 18px; }
+
+    .lede { font-size: 16px; }
+
+    strong { color: var(--ink); }
+
+    table {
+        width: 100%;
+        margin: 18px 0 26px;
+        border-collapse: collapse;
+        font-size: 14px;
+    }
+
+    th, td {
+        padding: 11px 12px;
+        border-bottom: 1px solid var(--line);
+        text-align: left;
+        vertical-align: middle;
+    }
+
+    th {
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+    }
+
+    td.area { color: var(--ink); font-weight: 600; width: 32%; }
+
+    td.bar { width: 26%; white-space: nowrap; }
+
+    .track {
+        display: inline-block;
+        width: 110px;
+        height: 7px;
+        margin-right: 9px;
+        border-radius: 99px;
+        background: var(--line);
+        vertical-align: middle;
+        overflow: hidden;
+    }
+
+    .fill {
+        display: block;
+        height: 100%;
+        border-radius: 99px;
+        background: var(--accent);
+    }
+
+    .pct { color: var(--ink); font-variant-numeric: tabular-nums; font-weight: 600; }
+
+    .overall {
+        margin: 26px 0 8px;
+        padding: 22px 26px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+    }
+
+    .overall .figure {
+        color: var(--ink);
+        font-size: 34px;
+        font-weight: 700;
+        letter-spacing: -0.8px;
+        line-height: 1.1;
+    }
+
+    .overall .track { width: 100%; height: 10px; margin: 14px 0 12px; display: block; }
+
+    .overall p { margin: 0; font-size: 14px; }
+
+    ul { margin: 0 0 16px; padding: 0; list-style: none; }
+
+    li {
+        position: relative;
+        margin: 0 0 9px;
+        padding-left: 28px;
+    }
+
+    li::before {
+        position: absolute;
+        left: 0;
+        top: 0;
+        font-size: 13px;
+        font-weight: 700;
+    }
+
+    .done li::before { content: "\2713"; color: var(--done); }
+
+    .open li::before {
+        content: "";
+        top: 7px;
+        width: 11px;
+        height: 11px;
+        border: 1.5px solid var(--open);
+        border-radius: 3px;
+    }
+
+    ol { margin: 0 0 16px; padding-left: 22px; }
+
+    ol li { padding-left: 4px; }
+
+    ol li::before { content: none; }
+
+    .note {
+        margin: 0 0 18px;
+        color: var(--muted);
+        font-size: 14px;
+    }
+
+    .foot {
+        margin-top: 44px;
+        padding-top: 20px;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 13px;
+    }
+
+    @media (max-width: 680px) {
+        body { padding: 20px 12px 48px; }
+        .sheet { padding: 28px 20px 36px; }
+        h1 { font-size: 24px; }
+        table, thead, tbody, tr, th, td { display: block; }
+        thead { display: none; }
+        tr { padding: 12px 0; border-bottom: 1px solid var(--line); }
+        th, td { padding: 2px 0; border: 0; width: auto !important; }
+        td.area { font-size: 15px; }
+    }
+
+    @media print {
+        body { padding: 0; background: #fff; font-size: 11pt; }
+        .sheet { max-width: none; padding: 0; border: 0; }
+        h2 { page-break-after: avoid; }
+        ul, ol, table { page-break-inside: avoid; }
+    }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+    <h1>Rehouz Real Estate — Project Status</h1>
+    <p class="meta">
+        <span><strong>Date:</strong> 25 October 2026</span>
+        <span><strong>Product:</strong> one free WordPress real-estate plugin</span>
+        <span><strong>Builder:</strong> Elementor only</span>
+    </p>
+
+    <h2>Where the project stands</h2>
+    <p class="lede">The plugin works end to end today. A site owner can install it, add listings, agents and
+        agencies from our own admin, and a visitor can browse, search, filter, see listings on a map, save
+        favourites, compare, send an inquiry, register, sign in and submit their own listing. Search, maps,
+        leads, user accounts and the admin dashboard are all built.</p>
+    <p>The work happening right now is the <strong>Elementor front end</strong>: giving every widget a full set
+        of design controls so a site can be built visually without touching code. One widget of eight is
+        design-complete. After that come the remaining widgets, then testing and the WordPress.org submission.</p>
+
+    <h2>Progress at a glance</h2>
+    <table>
+        <thead>
+        <tr><th>Area</th><th>Progress</th><th>What is left</th></tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="area">Backend and data model</td>
+            <td class="bar"><span class="track"><span class="fill" style="width:95%"></span></span><span class="pct">95%</span></td>
+            <td>MLS import, listing analytics, the full location dataset</td>
+        </tr>
+        <tr>
+            <td class="area">Search, maps, leads, alerts</td>
+            <td class="bar"><span class="track"><span class="fill" style="width:100%"></span></span><span class="pct">100%</span></td>
+            <td>Nothing — needs testing against live services</td>
+        </tr>
+        <tr>
+            <td class="area">Admin dashboard — function</td>
+            <td class="bar"><span class="track"><span class="fill" style="width:100%"></span></span><span class="pct">100%</span></td>
+            <td>Nothing</td>
+        </tr>
+        <tr>
+            <td class="area">Admin dashboard — design</td>
+            <td class="bar"><span class="track"><span class="fill" style="width:10%"></span></span><span class="pct">10%</span></td>
+            <td>Dashboard redesign, Settings restructure, Search Index and Elementor widgets pages</td>
+        </tr>
+        <tr>
+            <td class="area">Front end — templates and pages</td>
+            <td class="bar"><span class="track"><span class="fill" style="width:60%"></span></span><span class="pct">60%</span></td>
+            <td>Matching the supplied design across every page, projects display, agent directory</td>
+        </tr>
+        <tr>
+            <td class="area">Front end — user dashboard</td>
+            <td class="bar"><span class="track"><span class="fill" style="width:70%"></span></span><span class="pct">70%</span></td>
+            <td>Changes and redesign</td>
+        </tr>
+        <tr>
+            <td class="area">Elementor widgets</td>
+            <td class="bar"><span class="track"><span class="fill" style="width:40%"></span></span><span class="pct">40%</span></td>
+            <td>8 of 15 widgets built, 1 of 8 design-complete; AJAX filtering on the rest</td>
+        </tr>
+        <tr>
+            <td class="area">Release readiness</td>
+            <td class="bar"><span class="track"><span class="fill" style="width:10%"></span></span><span class="pct">10%</span></td>
+            <td>Theme testing, accessibility, translation, security and standards pass, submission</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="overall">
+        <div class="figure">Overall: about 65% complete</div>
+        <span class="track"><span class="fill" style="width:65%"></span></span>
+        <p>Read it as most of the engineering done and most of the design work still ahead. The remaining 35%
+            is not evenly weighted — the Elementor widgets, matching the templates to the design, and the two
+            dashboard redesigns are the bulk of it.</p>
+    </div>
+
+    <h2>1. Done — Backend / data</h2>
+    <ul class="done">
+        <li>Plugin foundation: activation, database tables, upgrade routine, settings storage</li>
+        <li>Listings, agents, agencies and projects (off-plan developments) as content types</li>
+        <li>Twelve categorisation lists (type, status, city, area, features, amenities, labels…)</li>
+        <li>Full listing field set — price, size, rooms, year, floor plans, documents, energy, rental terms, virtual tour</li>
+        <li>Custom field builder — a site owner can add their own fields</li>
+        <li>Search index table kept in sync automatically, with a rebuild tool</li>
+        <li>Search engine: filters, sorting, paging, result caching</li>
+        <li>Map search by distance ("near me", radius)</li>
+        <li>Lead capture: inquiry forms, storage, email notifications, spam protection (honeypot, rate limit, optional reCaptcha)</li>
+        <li>Favourites and compare, for logged-in users and guests</li>
+        <li>Reviews storage and moderation</li>
+        <li>Saved searches with hourly email alerts</li>
+        <li>Listing expiry — expired listings go back to draft automatically</li>
+        <li>Google rich results (listing schema) for SEO</li>
+        <li>Maps: OpenStreetMap and Google Maps, with marker clustering</li>
+        <li>Image sizes registered so listing photos load fast</li>
+        <li>CSV import and export for all four record types</li>
+        <li>Location importer: browse country / state / city / area, tick what is needed and import it as
+            categories, so a new site does not mean typing locations by hand</li>
+    </ul>
+
+    <h2>2. Done — Admin dashboard, functionally</h2>
+    <p class="note">Our own React app, not WordPress's default screens. Every screen below works and is
+        connected to the database. The <strong>visual design pass over these screens is still pending</strong>
+        — see section 5.</p>
+    <ul class="done">
+        <li>Complete admin shell: top navigation, sub-tabs, consistent design</li>
+        <li>Overview page: counts, expiry warnings, index health, recent leads</li>
+        <li>Listings, agents and agencies: list, create, edit, delete, bulk actions</li>
+        <li>All category screens</li>
+        <li>Leads page: filter, read, mark read, delete</li>
+        <li>Reviews moderation</li>
+        <li>Saved searches management</li>
+        <li>Settings, including a Colours page where the owner sets the site palette</li>
+        <li>Tools: custom fields, search index, import, export, system status report</li>
+    </ul>
+
+    <h2>3. Done — Visitor-facing front end</h2>
+    <ul class="done">
+        <li>Plugin's own page templates — listing page, archive, category, search results (these render even
+            with Elementor switched off, and work on any theme)</li>
+        <li>Single listing page: photo gallery with lightbox, tabs, collapsible sections, map, related listings</li>
+        <li>Search results page with live AJAX filtering, and a no-JavaScript fallback</li>
+        <li>User account area: my listings, favourites, saved searches, inquiries, profile, password</li>
+        <li>Front-end listing submission with photo upload and an admin approval queue</li>
+        <li>Sign in / register / password reset, in a modal, without leaving the page</li>
+        <li>Eight Elementor widgets built: property grid, search, map, favourites, compare, favourites count,
+            compare count, login</li>
+    </ul>
+
+    <h2>4. In progress — Elementor design controls</h2>
+    <p class="note">This is the current work. Each widget needs its design options exposed in Elementor so a
+        site can be styled visually.</p>
+    <ul class="done">
+        <li>Property widget — every part now has full controls: card, image, gallery, badges, photo counts,
+            category, price, title, address, details, author, action buttons (favourite / compare / share /
+            quick view) and the quick-view popup</li>
+    </ul>
+    <ul class="open">
+        <li>The same treatment for the other seven widgets</li>
+    </ul>
+
+    <h2>5. Remaining — Admin dashboard (design and restructure)</h2>
+    <p class="note">Agreed with the team, not yet started.</p>
+    <ul class="open">
+        <li>Plugin dashboard redesign — the whole admin look and feel</li>
+        <li>Elementor widgets page — fixing</li>
+        <li>Search Index page redesign</li>
+        <li>Settings menu — everything under it redesigned and relocated into a clearer structure</li>
+        <li>MLS import / general import tool</li>
+    </ul>
+
+    <h2>6. Remaining — Front end</h2>
+    <ul class="open">
+        <li>User / Agent / Agency dashboard — changes and redesign</li>
+        <li>Visitor filtering, load more and infinite scroll on the remaining Elementor widgets. The property
+            grid already has all three; every other listing widget still needs them</li>
+        <li>Match the plugin's own page templates to the supplied design. They render every field correctly
+            today but were built plain on purpose, so the single listing page, archive, category, search
+            results and the account pages all need a design pass</li>
+        <li>More Elementor widgets: listing list and carousel, agent grid, agent card, agency grid, category
+            list, and the single-listing building blocks</li>
+        <li>Projects (off-plan) front end — the data model is built, the display is not</li>
+        <li>Agent directory page with filtering</li>
+        <li>Ready-made starter layouts a user can import instead of building pages from scratch</li>
+        <li>Block-theme template registration (for Site Editor themes)</li>
+    </ul>
+
+    <h2>7. Remaining — Backend</h2>
+    <ul class="open">
+        <li>Location data: the importer itself is <strong>built</strong> (see section 1) — what is left is the
+            dataset. Only two countries are published so far, and nothing is bundled with the plugin, so the
+            tool needs an internet connection to work</li>
+        <li>Migration importer from Houzez, RealHomes and Estatik — lets a site move to us from a competing
+            theme. Strong selling point</li>
+        <li>Listing analytics: views, inquiry conversion, per-agent reporting</li>
+        <li>MLS / property feed import (RESO, XML, JSON) with scheduling and duplicate handling</li>
+    </ul>
+
+    <h2>8. Remaining — Release readiness</h2>
+    <ul class="open">
+        <li>Test on multiple themes and screen sizes, with and without Elementor</li>
+        <li>Accessibility pass (keyboard, focus, contrast)</li>
+        <li>Full translation pass, translation file generated</li>
+        <li>Security checklist and code standards pass</li>
+        <li>WordPress.org Plugin Check must pass clean</li>
+        <li>Verify on PHP 7.4 and PHP 8.3</li>
+        <li>Performance check — target is search under 200ms on 50,000 listings (designed for it, never
+            measured; our test data is 15 listings)</li>
+        <li>readme / store listing written</li>
+        <li>Reserve the plugin name on WordPress.org</li>
+        <li>Submit for review</li>
+    </ul>
+
+    <h2>9. Not scheduled (after launch)</h2>
+    <p class="note">Agreed as later work, not part of the first release.</p>
+    <ul class="open">
+        <li>Paid membership packages and listing limits</li>
+        <li>Payments (Stripe, PayPal, WooCommerce), invoices, subscriptions</li>
+        <li>CRM: pipeline, notes, activities, deal records</li>
+        <li>Buyer-to-agent messaging threads</li>
+        <li>Mapbox, polygon search, drag-to-search</li>
+        <li>Mortgage calculator, social login, agent verification</li>
+    </ul>
+
+    <h2>Risks worth flagging</h2>
+    <ol>
+        <li><strong>Design work is the slow part, and there are two fronts of it.</strong> The Elementor widget
+            controls (seven widgets remain, roughly a day each) and the admin redesign are separate pieces of
+            work that cannot share effort.</li>
+        <li><strong>Performance is designed for, not proven.</strong> The 50,000-listing target needs a real
+            dataset before we can claim it.</li>
+        <li><strong>Email, lead flows and reCaptcha have not been run against live services</strong> — only
+            local. Needs a staging pass.</li>
+        <li><strong>WordPress.org review is a queue, not a date.</strong> A rejection costs weeks, so the
+            checklist pass in section 8 should not be rushed.</li>
+        <li><strong>MLS import is open-ended.</strong> Every MLS feed is shaped differently; scope needs
+            pinning to specific feeds before it can be estimated.</li>
+        <li><strong>The templates were built plain on purpose.</strong> Correctness first, design second —
+            so matching them to the design is a known, sizeable piece of work, not a surprise. It is the
+            largest single item left on the front end after the widgets.</li>
+        <li><strong>The location dataset is served from our own server.</strong> Two countries are published
+            today. Until the full set is there, and ideally a copy ships inside the plugin, a site without
+            internet access cannot import locations.</li>
+    </ol>
+
+    <h2>Suggested order for the next stretch</h2>
+    <ol>
+        <li>Finish the Elementor widget controls (the current work)</li>
+        <li>Build the remaining widgets, in the order a demo site needs them</li>
+        <li>Match the page templates to the design</li>
+        <li>Admin dashboard redesign, Settings restructure, Search Index and Elementor widgets pages</li>
+        <li>User / Agent / Agency dashboard redesign</li>
+        <li>Import tools — publish the full location dataset, migration from competing themes, MLS</li>
+        <li>Starter layouts, so the plugin demos itself</li>
+        <li>Theme and accessibility testing</li>
+        <li>WordPress.org submission</li>
+    </ol>
+
+    <p class="foot">Rehouz Real Estate — internal status report, 25 October 2026.</p>
+
+</div>
+</body>
+</html>
